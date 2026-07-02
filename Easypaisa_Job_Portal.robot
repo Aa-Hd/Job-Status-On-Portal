@@ -5,9 +5,6 @@ Library    Autosphere.FileSystem
 Variables  config_reader.py
 Library    Autosphere.Email.ImapSmtp   smtp_server=smtp.gmail.com  smtp_port=587
 Task Setup  Authorize  account=${SENDER_GMAIL}  password=${GMAIL_PASSWORD}
-#Suite Teardown    Run Keyword If Any Tests Failed    Failure Screenshot And Mail
-#*** Variables ***
-#${screenshot_name}=  EASYPAISA_ENG.png
 *** Keywords ***
 Open Webpage
     Open Browser      ${IP_ADDRESS}
@@ -34,15 +31,15 @@ Find Job Status
 Take Screenshot
     Wait Until Page Contains Element    //div[@class="col-sm-12"]     timeout=60
     Sleep    4s    reason=To monitor working of bot
-    Screenshot    //div[@class="col-sm-12"]    filename=${SCREENSHOT_NAME}                             #${screenshot_name}
+    Screenshot    //div[@class="col-sm-12"]    filename=${SCREENSHOT_NAME}                             
 Logging Out
     Click Element  //li//a[text()="Sign Out"]
     Sleep   4s     reason=To monitor working of bot
 Upload File 
     Upload Via Sftp
-    ...    local_path=${LOCAL_PATH}                                                      #D:\\hello world\\${screenshot_name}
-    ...    remote_path=${REMOTE_PATH}                                   #Practice Workbook.xls #home\\amna\\tabeeb_easypaisa_obd_screenshot
-    ...    hostname=${HOST_NAME}                           #192.168.1.139
+    ...    local_path=${LOCAL_PATH}                                     #D:\\hello world\\${screenshot_name}
+    ...    remote_path=${REMOTE_PATH}                                   #home\\amna\\tabeeb_easypaisa_obd_screenshot
+    ...    hostname=${HOST_NAME}                           
     ...    port=${PORT}
     ...    username=${USER_NAME}
     ...    password=${PASSWORD}
@@ -56,7 +53,6 @@ Failure Screenshot And Mail
     ...    subject="Bot Failure Message"
     ...    body="this message is sent to inform you about the bot failure"
     ...    images=${OUTPUTDIR}\\Failure_Screenshot.png
-    #Remove File    ${OUTPUTDIR}\\Failure_Screenshot.png
 *** Tasks ***
 Create Task
     Open Webpage
