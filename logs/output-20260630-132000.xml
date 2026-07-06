@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.6 on win32)" generated="20260630 13:17:02.647" rpa="true" schemaversion="3">
+<suite id="s1" name="Easypaisa Job Portal" source="D:\hello world\Easypaisa_Job_Portal.robot">
+<test id="s1-t1" name="Create Task" line="61">
+<kw name="Authorize" library="Autosphere.Email.ImapSmtp" type="SETUP">
+<arg>account=${SENDER_GMAIL}</arg>
+<arg>password=${GMAIL_PASSWORD}</arg>
+<doc>Authorize user to SMTP and IMAP servers.</doc>
+<status status="PASS" starttime="20260630 13:17:05.063" endtime="20260630 13:17:12.150"/>
+</kw>
+<kw name="Open Webpage">
+<kw name="Open Browser" library="Autosphere.Browser.Playwright">
+<arg>${IP_ADDRESS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20260630 13:17:12.162" level="INFO">Opening browser 'chrome' to base url 'http:\192.168.1.139:20004\kr-promo-bc\index.php'.</msg>
+<msg timestamp="20260630 13:17:12.564" level="WARN">The chromedriver version (127.0.6533.99) detected in PATH at C:\Program Files\Autosphere\Browser\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (149.0.7827.201); currently, chromedriver 149.0.7827.155 is recommended for chrome 149.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20260630 13:17:12.162" endtime="20260630 13:17:15.393"/>
+</kw>
+<kw name="Maximize Browser Window" library="Autosphere.Browser.Playwright">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20260630 13:17:15.393" endtime="20260630 13:17:15.473"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:12.162" endtime="20260630 13:17:15.473"/>
+</kw>
+<kw name="Login Portal">
+<kw name="Input Text" library="Autosphere.Browser.Playwright">
+<arg>//input[@type="text" and @placeholder="Username"]</arg>
+<arg>${LOGIN_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260630 13:17:15.483" level="INFO">Typing text 'admin' into text field '//input[@type="text" and @placeholder="Username"]'.</msg>
+<status status="PASS" starttime="20260630 13:17:15.477" endtime="20260630 13:17:15.909"/>
+</kw>
+<kw name="Input Text" library="Autosphere.Browser.Playwright">
+<arg>//input[@type="password" and @placeholder="Password"]</arg>
+<arg>${LOGIN_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260630 13:17:15.910" level="INFO">Typing text 'admin' into text field '//input[@type="password" and @placeholder="Password"]'.</msg>
+<status status="PASS" starttime="20260630 13:17:15.909" endtime="20260630 13:17:16.051"/>
+</kw>
+<kw name="Click Button" library="Autosphere.Browser.Playwright">
+<arg>Sign In</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20260630 13:17:16.051" level="INFO">Clicking button 'Sign In'.</msg>
+<status status="PASS" starttime="20260630 13:17:16.051" endtime="20260630 13:17:16.614"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:15.475" endtime="20260630 13:17:16.614"/>
+</kw>
+<kw name="Find Job Status">
+<kw name="Wait Until Page Contains Element" library="Autosphere.Browser.Playwright">
+<arg>//div[@class="col-sm-12"]</arg>
+<arg>timeout=60</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20260630 13:17:16.616" endtime="20260630 13:17:16.653"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<arg>reason=To monitor working of bot</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20260630 13:17:20.654" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20260630 13:17:20.654" level="INFO">To monitor working of bot</msg>
+<status status="PASS" starttime="20260630 13:17:16.653" endtime="20260630 13:17:20.654"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Click Element</arg>
+<arg>//tr[td[contains(normalize-space(), 'EB_EASYPAISA_') or contains(normalize-space(), 'eb_easypaisa_')]]//input[@value='Job Status']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Click Element" library="Autosphere.Browser.Playwright">
+<arg>//tr[td[contains(normalize-space(), 'EB_EASYPAISA_') or contains(normalize-space(), 'eb_easypaisa_')]]//input[@value='Job Status']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260630 13:17:20.654" level="INFO">Clicking element '//tr[td[contains(normalize-space(), 'EB_EASYPAISA_') or contains(normalize-space(), 'eb_easypaisa_')]]//input[@value='Job Status']'.</msg>
+<status status="PASS" starttime="20260630 13:17:20.654" endtime="20260630 13:17:20.998"/>
+</kw>
+<msg timestamp="20260630 13:17:20.999" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20260630 13:17:20.654" endtime="20260630 13:17:20.999"/>
+</kw>
+<if>
+<branch type="IF" condition="${status}==True">
+<kw name="Take Screenshot">
+<kw name="Wait Until Page Contains Element" library="Autosphere.Browser.Playwright">
+<arg>//div[@class="col-sm-12"]</arg>
+<arg>timeout=60</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20260630 13:17:21.000" endtime="20260630 13:17:21.016"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<arg>reason=To monitor working of bot</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20260630 13:17:25.016" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20260630 13:17:25.016" level="INFO">To monitor working of bot</msg>
+<status status="PASS" starttime="20260630 13:17:21.016" endtime="20260630 13:17:25.016"/>
+</kw>
+<kw name="Screenshot" library="Autosphere.Browser.Playwright">
+<arg>//div[@class="col-sm-12"]</arg>
+<arg>filename=${SCREENSHOT_NAME}</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<msg timestamp="20260630 13:17:25.277" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="screenshot" class="robot-seleniumlibrary-screenshot" src="data:image/png;base64,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" width="400px"&gt;</msg>
+<msg timestamp="20260630 13:17:25.279" level="INFO">Screenshot saved to file: EASYPAISA_ENG.png</msg>
+<status status="PASS" starttime="20260630 13:17:25.016" endtime="20260630 13:17:25.280"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:20.999" endtime="20260630 13:17:25.280"/>
+</kw>
+<kw name="Upload File">
+<kw name="Upload Via Sftp" library="upload_file_details">
+<arg>local_path=${LOCAL_PATH}</arg>
+<arg>remote_path=${REMOTE_PATH}</arg>
+<arg>hostname=${HOST_NAME}</arg>
+<arg>port=${PORT}</arg>
+<arg>username=${USER_NAME}</arg>
+<arg>password=${PASSWORD}</arg>
+<msg timestamp="20260630 13:17:25.766" level="INFO">[chan 0] Opened sftp connection (server version 3)</msg>
+<msg timestamp="20260630 13:17:25.813" level="INFO">[chan 0] sftp session closed.</msg>
+<msg timestamp="20260630 13:17:25.831" level="INFO">hostname = '192.168.1.139'
+port = 22
+username = 'amna'
+local_path = 'D:\\hello world\\EASYPAISA_ENG.png'
+remote_path = 'home\\amna\\tabeeb_easypaisa_obd_screenshot'
+Upload successful!</msg>
+<status status="PASS" starttime="20260630 13:17:25.281" endtime="20260630 13:17:25.831"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:25.280" endtime="20260630 13:17:25.833"/>
+</kw>
+<kw name="Logging Out">
+<kw name="Click Element" library="Autosphere.Browser.Playwright">
+<arg>//li//a[text()="Sign Out"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260630 13:17:25.833" level="INFO">Clicking element '//li//a[text()="Sign Out"]'.</msg>
+<status status="PASS" starttime="20260630 13:17:25.833" endtime="20260630 13:17:26.114"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<arg>reason=To monitor working of bot</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20260630 13:17:30.116" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20260630 13:17:30.116" level="INFO">To monitor working of bot</msg>
+<status status="PASS" starttime="20260630 13:17:26.114" endtime="20260630 13:17:30.116"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:25.833" endtime="20260630 13:17:30.116"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:20.999" endtime="20260630 13:17:30.116"/>
+</branch>
+<branch type="ELSE">
+<kw name="Screenshot" library="Autosphere.Browser.Playwright">
+<arg>//div[@class="col-sm-12"]</arg>
+<arg>filename=${None}</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<status status="NOT RUN" starttime="20260630 13:17:30.116" endtime="20260630 13:17:30.116"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>TABE*B_EASYPAISA_ENG : Job Entry Is Not Found</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20260630 13:17:30.116" endtime="20260630 13:17:30.116"/>
+</kw>
+<kw name="Logging Out">
+<status status="NOT RUN" starttime="20260630 13:17:30.116" endtime="20260630 13:17:30.116"/>
+</kw>
+<status status="NOT RUN" starttime="20260630 13:17:30.116" endtime="20260630 13:17:30.116"/>
+</branch>
+<status status="PASS" starttime="20260630 13:17:20.999" endtime="20260630 13:17:30.116"/>
+</if>
+<status status="PASS" starttime="20260630 13:17:16.616" endtime="20260630 13:17:30.116"/>
+</kw>
+<kw name="Deleting Saved Screenshot">
+<kw name="Remove File" library="Autosphere.FileSystem">
+<arg>D:\\hello world\\${SCREENSHOT_NAME}</arg>
+<doc>Removes the given file.</doc>
+<status status="PASS" starttime="20260630 13:17:30.118" endtime="20260630 13:17:30.119"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:30.118" endtime="20260630 13:17:30.119"/>
+</kw>
+<kw name="Close Browser" library="Autosphere.Browser.Playwright" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20260630 13:17:30.127" endtime="20260630 13:17:32.735"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:05.063" endtime="20260630 13:17:32.735"/>
+</test>
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn" type="TEARDOWN">
+<arg>Failure Screenshot And Mail</arg>
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<status status="PASS" starttime="20260630 13:17:32.766" endtime="20260630 13:17:32.766"/>
+</kw>
+<status status="PASS" starttime="20260630 13:17:02.655" endtime="20260630 13:17:32.767"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Easypaisa Job Portal">Easypaisa Job Portal</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20260630 13:17:04.437" level="WARN">This is a deprecated import that will be removed in favor of Autosphere.Browser.Selenium</msg>
+<msg timestamp="20260630 13:17:12.564" level="WARN">The chromedriver version (127.0.6533.99) detected in PATH at C:\Program Files\Autosphere\Browser\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (149.0.7827.201); currently, chromedriver 149.0.7827.155 is recommended for chrome 149.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>

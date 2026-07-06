@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.6 on win32)" generated="20260703 10:32:33.183" rpa="true" schemaversion="3">
+<suite id="s1" name="Easypaisa Job Portal" source="D:\Easypaisa_Bot\Easypaisa_Job_Portal.robot">
+<test id="s1-t1" name="Create Task" line="62">
+<kw name="Authorize" library="Autosphere.Email.ImapSmtp" type="SETUP">
+<arg>account=${SENDER_GMAIL}</arg>
+<arg>password=${GMAIL_PASSWORD}</arg>
+<doc>Authorize user to SMTP and IMAP servers.</doc>
+<status status="PASS" starttime="20260703 10:32:36.303" endtime="20260703 10:32:43.647"/>
+</kw>
+<kw name="Open Webpage">
+<kw name="Open Browser" library="Autosphere.Browser.Playwright">
+<arg>${IP_ADDRESS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20260703 10:32:43.656" level="INFO">Opening browser 'chrome' to base url 'http:\192.168.1.139:20004\kr-promo-bc\index.php'.</msg>
+<msg timestamp="20260703 10:32:44.178" level="WARN">The chromedriver version (127.0.6533.99) detected in PATH at C:\Program Files\Autosphere\Browser\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (149.0.7827.201); currently, chromedriver 149.0.7827.155 is recommended for chrome 149.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20260703 10:32:43.656" endtime="20260703 10:32:46.867"/>
+</kw>
+<kw name="Maximize Browser Window" library="Autosphere.Browser.Playwright">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20260703 10:32:46.867" endtime="20260703 10:32:46.928"/>
+</kw>
+<status status="PASS" starttime="20260703 10:32:43.653" endtime="20260703 10:32:46.928"/>
+</kw>
+<status status="PASS" starttime="20260703 10:32:36.303" endtime="20260703 10:32:46.930"/>
+</test>
+<status status="PASS" starttime="20260703 10:32:33.199" endtime="20260703 10:32:46.934"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Easypaisa Job Portal">Easypaisa Job Portal</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20260703 10:32:35.616" level="WARN">This is a deprecated import that will be removed in favor of Autosphere.Browser.Selenium</msg>
+<msg timestamp="20260703 10:32:35.725" level="ERROR">Error in file 'D:\Easypaisa_Bot\Easypaisa_Job_Portal.robot' on line 3: Library 'D:\hello world\upload_file_details.py' does not exist.</msg>
+<msg timestamp="20260703 10:32:44.178" level="WARN">The chromedriver version (127.0.6533.99) detected in PATH at C:\Program Files\Autosphere\Browser\chromedriver-win64\chromedriver.exe might not be compatible with the detected chrome version (149.0.7827.201); currently, chromedriver 149.0.7827.155 is recommended for chrome 149.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>
