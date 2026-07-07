@@ -1,9 +1,7 @@
 *.ini
-*.html
-*.xml
 *.bat
 logs/
 output/
 results/
 .vscode/
-_pycache_/
+__pycache__/
