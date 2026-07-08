@@ -22,7 +22,7 @@ Find Job Status
     Wait Until Page Contains Element    //div[@class="col-sm-12"]     timeout=60
     Sleep    4s   reason=To monitor working of bot   
     # ${status}=  Run Keyword And Return Status   Page Should Contain Element   
-    # ...    //tr[td[contains(normalize-space(), 'EB_EAS*AISA_') or contains(normalize-space(), 'eb_easypaisa_') or contains(normalize-space(), 'eb_Easypaisa_')]]//input[@value='Job Status']
+    # ...    //tr[td[contains(normalize-space(), 'EB_EASYPAISA_') or contains(normalize-space(), 'eb_easypaisa_') or contains(normalize-space(), 'eb_Easypaisa_')]]//input[@value='Job Status']
     ${status}=  Run Keyword And Return Status   Page Should Contain Element   
     ...    //tr[td[contains(normalize-space(), 'TABEEB_') or contains(normalize-space(), 'tabeeb_') or contains(normalize-space(), 'Tabeeb_') or contains(normalize-space(), 'TABEB_') or contains(normalize-space(), 'tabeb_') or contains(normalize-space(), 'Tabeb_')]]//input[@value='Job Status']
 
@@ -31,8 +31,9 @@ Find Job Status
     
         ${current_progress}=  Get Text
         ...  //tr[td[contains(normalize-space(), 'TABEEB_') or contains(normalize-space(), 'tabeeb_') or contains(normalize-space(), 'Tabeeb_') or contains(normalize-space(), 'TABEB_') or contains(normalize-space(), 'tabeb_') or contains(normalize-space(), 'Tabeb_')]]//td//div[@role="progressbar"]
-        ${current_progress_percentage}=  Split String  ${current_progress}  %
-        #${current_progress_percentage}=  Set Variable  45
+        ${current_progress}=  Split String  ${current_progress}  %
+        ${current_progress_percentage}=  Strip String  ${current_progress}[0]
+
         #IF  ('${current_progress}'=='${previous_progress_in_percentage}') or ('${current_progress}'=='100% Complete (success)')
         IF  '${current_progress_percentage}[0]'=='${previous_progress_in_percentage}' or '${current_progress_percentage}[0]'== '100' 
             Send Message    
