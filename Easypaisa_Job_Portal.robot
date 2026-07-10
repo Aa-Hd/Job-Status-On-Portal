@@ -70,9 +70,9 @@ Logging Out
     Sleep   4s     reason=To monitor working of bot
 Upload File 
     Upload Via Sftp
-    ...    local_path=${LOCAL_PATH}                                                      #D:\\hello world\\${screenshot_name}
-    ...    remote_path=${REMOTE_PATH}                                   #Practice Workbook.xls #home\\amna\\tabeeb_easypaisa_obd_screenshot
-    ...    hostname=${HOST_NAME}                           #192.168.1.139
+    ...    local_path=${LOCAL_PATH}                                                      
+    ...    remote_path=${REMOTE_PATH}                                   
+    ...    hostname=${HOST_NAME}                          
     ...    port=${PORT}
     ...    username=${USER_NAME}
     ...    password=${PASSWORD}
