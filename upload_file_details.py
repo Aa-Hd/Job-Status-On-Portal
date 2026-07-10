@@ -31,12 +31,3 @@ def upload_via_sftp(local_path, remote_path, hostname, port, username, password)
     finally:
         ssh.close()
 
-#Example Usage
-# upload_via_sftp(
-#     local_path="D:\\Autobots\\EB_EASYPAISA_ENG.png",
-#     remote_path="B_EASYPAISA_ENG.png",
-#     hostname="192.168.1.139",
-#     port=22,
-#     username="amna",
-#     password="amna@001"
-# )
